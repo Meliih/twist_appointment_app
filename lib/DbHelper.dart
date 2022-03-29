@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class DbHelper{
 
+  // DatabaseReference reference = FirebaseDatabase.instance.reference().child("path");
+  // reference.set("aaa");
+
   List<Trainer> Trainers (){
 
     Trainer trainer = Trainer(1,"image/woman.png","Çağla Öner","5.0","",[1,2]);

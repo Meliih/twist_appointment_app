@@ -27,10 +27,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 name: name,
                 email: email,
                 onClicked: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => UserPage(
-                    name: name,
-                    image: image,
-                  ),
+                  builder: (context) => UserPage(),
                 )),
               ),
               Container(
@@ -62,8 +59,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                     Divider(color: Colors.white70),
                     const SizedBox(height: 20),
                     buildMenuItem(
-                      text: "Eklentiler",
-                      icon: Icons.account_tree_outlined,
+                      text: "Destek",
+                      icon: Icons.support,
                     ),
                     const SizedBox(height: 16),
                     buildMenuItem(
@@ -73,8 +70,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   ],
                 ),
               ),
-
-
             ],
           )),
     );
@@ -122,16 +117,23 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 radius: 30,
                 backgroundImage: NetworkImage(image),
               ),
-              SizedBox(width: 20,),
+              SizedBox(
+                width: 20,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(name,style: TextStyle(fontSize: 14, color: Colors.white,)
+                  Text(name,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                      )),
+                  const SizedBox(
+                    height: 4,
                   ),
-                const SizedBox(height: 4,),
                   Text(
-                      email,
-                    style: TextStyle(fontSize: 14,color: Colors.white),
+                    email,
+                    style: TextStyle(fontSize: 14, color: Colors.white),
                   ),
                 ],
               )

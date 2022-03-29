@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "991244184154",
+    "project_id": "twist-c1b5a",
+    "storage_bucket": "twist-c1b5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991244184154:android:eb3f04ce86213613cfc663",
+        "android_client_info": {
+          "package_name": "com.example.twist_appointment_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991244184154-sd5c9p95fqvtobp6509u4v6k40j5slf6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0dZ5fkTtf628PxaUYdKBzetKPgDgNtPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991244184154-sd5c9p95fqvtobp6509u4v6k40j5slf6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

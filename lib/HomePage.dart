@@ -18,11 +18,11 @@ class HomePageState extends State<HomePage> {
   Widget initScreen() {
     List<Trainer> trainers = DbHelper().Trainers();
     List<Category> categories = DbHelper().Categories();
-    for (int i = 0; i<categories.length;i++){
-      for(int j = 0;j < trainers.length;j++){
-        for (int k=0; k < trainers[j].category_id.length ; k++) {
-          if(categories[i].id == trainers[j].category_id[k]) {
-              categories[i].trainerCount++;
+    for (int i = 0; i < categories.length; i++) {
+      for (int j = 0; j < trainers.length; j++) {
+        for (int k = 0; k < trainers[j].category_id.length; k++) {
+          if (categories[i].id == trainers[j].category_id[k]) {
+            categories[i].trainerCount++;
           }
         }
       }
@@ -50,11 +50,9 @@ class HomePageState extends State<HomePage> {
             child: Container(
               margin: EdgeInsets.only(right: 5),
               child: CircleAvatar(
-                backgroundImage:
-                new AssetImage("image/girl.png"),
+                backgroundImage: new AssetImage("image/girl.png"),
                 radius: 22.0,
               ),
-
             ),
           )
         ],
@@ -80,72 +78,6 @@ class HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 5, left: 20),
-              child: Text(
-                "Hoşgeldiniz",
-                style: TextStyle(
-                  color: Color(0xff363636),
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Roboto',
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 25, left: 20, right: 20),
-              width: size.width,
-              height: 60,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(5),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x14000000),
-                    offset: Offset(0, 10),
-                    blurRadius: 15,
-                    spreadRadius: 0,
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 5,
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      child: TextField(
-                        maxLines: 1,
-                        autofocus: false,
-                        style:
-                            TextStyle(color: Color(0xff107163), fontSize: 20),
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Arama..',
-                        ),
-                        cursorColor: Color(0xff107163),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xff107163),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Center(
-                        child: Icon(
-                          Icons.search,
-                          color: Colors.white,
-                          size: 25,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
               width: size.width,
               margin: EdgeInsets.only(top: 20, left: 20),
               child: Stack(
@@ -162,20 +94,6 @@ class HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20, top: 1),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        'Tümünü göster',
-                        style: TextStyle(
-                          color: Color(0xff5e5d5d),
-                          fontSize: 19,
-                          fontFamily: 'Roboto',
-                        ),
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),
@@ -186,9 +104,8 @@ class HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: categories.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return demoCategories(trainers,categories[index]);
-                  }
-              ),
+                    return demoCategories(trainers, categories[index]);
+                  }),
             ),
             Container(
               width: size.width,
@@ -207,33 +124,17 @@ class HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20, top: 1),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        'Tümünü göster',
-                        style: TextStyle(
-                          color: Color(0xff5e5d5d),
-                          fontSize: 19,
-                          fontFamily: 'Roboto',
-                        ),
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),
             Expanded(
               child: Container(
-
                 margin: EdgeInsets.only(left: 20, right: 20),
                 child: ListView.builder(
                     itemCount: trainers.length,
                     itemBuilder: (BuildContext context, int index) {
                       return demoTopRatedDr(context, trainers[index]);
-                    }
-                ),
+                    }),
               ),
             )
           ],
@@ -242,11 +143,14 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  Widget demoCategories(List<Trainer> trainers,Category category) {
+  Widget demoCategories(List<Trainer> trainers, Category category) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => CategoryTrainer(trainers:trainers,selectedCategory: category.id)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CategoryTrainer(
+                    trainers: trainers, selectedCategory: category.id)));
       },
       child: Container(
         width: 100,
@@ -260,7 +164,7 @@ class HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              child: Image.asset(category.img,height: 50),
+              child: Image.asset(category.img, height: 50),
             ),
             Container(
               margin: EdgeInsets.only(top: 10),
@@ -296,12 +200,16 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  Widget demoTopRatedDr(BuildContext context,Trainer trainer) {
+  Widget demoTopRatedDr(BuildContext context, Trainer trainer) {
     var size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => DoctorDetailPage(trainer: trainer,)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => DoctorDetailPage(
+                  trainer: trainer,
+                )));
       },
       child: Container(
         height: 90,
@@ -353,7 +261,7 @@ class HomePageState extends State<HomePage> {
                         ),
                         Container(
                           margin:
-                              EdgeInsets.only(top: 3, left: size.width * 0.25),
+                          EdgeInsets.only(top: 3, left: size.width * 0.25),
                           child: Row(
                             children: [
                               Container(
