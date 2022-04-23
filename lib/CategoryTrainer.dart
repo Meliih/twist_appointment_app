@@ -4,12 +4,12 @@ import 'package:twist_appointment_app/DbHelper.dart';
 import 'Doctor_details_page.dart';
 
 class CategoryTrainer extends StatefulWidget {
-
   final List<Trainer> trainers;
   final int selectedCategory;
 
-  const CategoryTrainer({Key? key, required this.trainers,required this.selectedCategory}) : super(key: key);
-
+  const CategoryTrainer(
+      {Key? key, required this.trainers, required this.selectedCategory})
+      : super(key: key);
 
   @override
   State<CategoryTrainer> createState() => _CategoryTrainerState();
@@ -18,10 +18,11 @@ class CategoryTrainer extends StatefulWidget {
 class _CategoryTrainerState extends State<CategoryTrainer> {
   @override
   Widget build(BuildContext context) {
-    return initWidget(context, widget.trainers,widget.selectedCategory);
+    return initWidget(context, widget.trainers, widget.selectedCategory);
   }
 
-  Widget initWidget(BuildContext context, List<Trainer> trainers,int selectedCategory) {
+  Widget initWidget(
+      BuildContext context, List<Trainer> trainers, int selectedCategory) {
     //Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.purple,
@@ -29,10 +30,7 @@ class _CategoryTrainerState extends State<CategoryTrainer> {
         elevation: 0.0,
         backgroundColor: Colors.purple,
         //centerTitle: true,
-        leading: Icon(
-          Icons.menu,
-          color: Colors.white,
-        ),
+
         actions: [
           GestureDetector(
             child: Container(
@@ -59,41 +57,42 @@ class _CategoryTrainerState extends State<CategoryTrainer> {
               child: ListView.builder(
                   itemCount: trainers.length,
                   itemBuilder: (BuildContext context, int index) {
-                    for(int i = 0; i<trainers[index].category_id.length; i++) {
+                    for (int i = 0;
+                        i < trainers[index].category_id.length;
+                        i++) {
                       if (selectedCategory == trainers[index].category_id[i]) {
                         return demoTopRatedDr(context, trainers[index]);
                       }
                     }
-                    return SizedBox(width: 0,);
-                  }
-              ),
+                    return SizedBox(
+                      width: 0,
+                    );
+                  }),
             ),
-
           ),
         ],
       ),
     );
   }
 }
-  Widget demoTopRatedDr(BuildContext context, Trainer trainer) {
 
-    var size = MediaQuery.of(context).size;
-    return GestureDetector(
-      onTap: () {
-        /*Navigator.push(context,
+Widget demoTopRatedDr(BuildContext context, Trainer trainer) {
+  var size = MediaQuery.of(context).size;
+  return GestureDetector(
+    onTap: () {
+      /*Navigator.push(context,
             MaterialPageRoute(builder: (context) => DoctorDetailPage()));*/
-      },
-      child:
-      Container(
-        height: 115,
-        // width: size.width,
-        margin: EdgeInsets.only(top: 10),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: _buildRow(context,trainer),
-        /*Row(
+    },
+    child: Container(
+      height: 115,
+      // width: size.width,
+      margin: EdgeInsets.only(top: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: _buildRow(context, trainer),
+      /*Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -171,57 +170,61 @@ class _CategoryTrainerState extends State<CategoryTrainer> {
             ),
           ],
         ),*/
-      ),
-    );
-  }
+    ),
+  );
+}
 
-  Widget _buildRow(BuildContext context,Trainer trainer) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        children: <Widget>[
-          CircleAvatar(
-            radius: 35,
-            backgroundImage: AssetImage(trainer.img),
+Widget _buildRow(BuildContext context, Trainer trainer) {
+  return Container(
+    padding: const EdgeInsets.all(16),
+    child: Row(
+      children: <Widget>[
+        CircleAvatar(
+          radius: 35,
+          backgroundImage: AssetImage(trainer.img),
+        ),
+        SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text(trainer.name, style: TextStyle(color: Colors.grey)),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text(trainer.domain,
+                          style: TextStyle(color: Colors.grey)),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text(trainer.rating,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text("Puan", style: TextStyle(color: Colors.grey)),
+                    ],
+                  ),
+                ],
+              ),
+              OutlineButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                DoctorDetailPage(trainer: trainer)));
+                  },
+                  child: Text("Randevu Al")),
+            ],
           ),
-          SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Text(trainer.name, style: TextStyle(color: Colors.grey)),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text(trainer.domain, style: TextStyle(color: Colors.grey)),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text(trainer.rating, style: TextStyle(fontWeight: FontWeight.bold)),
-                        Text("Puan", style: TextStyle(color: Colors.grey)),
-                      ],
-                    ),
-                  ],
-                ),
-                OutlineButton(onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DoctorDetailPage(trainer:trainer)));
-                }, child: Text("Randevu Al")),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-
-
+        ),
+      ],
+    ),
+  );
+}

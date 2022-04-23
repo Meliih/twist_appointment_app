@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:twist_appointment_app/CategoryTrainer.dart';
 import 'package:twist_appointment_app/DbHelper.dart';
 import 'package:twist_appointment_app/NavigationDrawer.dart';
+import 'package:twist_appointment_app/Screen/UserPageScreen.dart';
 import 'Doctor_details_page.dart';
+import 'Screen/NotificationScreen.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -44,6 +46,12 @@ class HomePageState extends State<HomePage> {
                 color: Colors.white,
               ),
             ),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NotificationScreen()));
+            },
           ),
           GestureDetector(
             behavior: HitTestBehavior.translucent,
@@ -54,6 +62,10 @@ class HomePageState extends State<HomePage> {
                 radius: 22.0,
               ),
             ),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => UserPage()));
+            },
           )
         ],
       ),
@@ -208,8 +220,8 @@ class HomePageState extends State<HomePage> {
             context,
             MaterialPageRoute(
                 builder: (context) => DoctorDetailPage(
-                  trainer: trainer,
-                )));
+                      trainer: trainer,
+                    )));
       },
       child: Container(
         height: 90,
@@ -261,7 +273,7 @@ class HomePageState extends State<HomePage> {
                         ),
                         Container(
                           margin:
-                          EdgeInsets.only(top: 3, left: size.width * 0.25),
+                              EdgeInsets.only(top: 3, left: size.width * 0.25),
                           child: Row(
                             children: [
                               Container(

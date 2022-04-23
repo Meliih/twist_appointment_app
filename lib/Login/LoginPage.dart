@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:twist_appointment_app/HomePage.dart';
 import 'package:twist_appointment_app/Login/ForgetPassword.dart';
+import 'package:twist_appointment_app/Screen/UserPageScreen.dart';
 
 import 'Signup.dart';
 
@@ -32,8 +33,7 @@ class _LoginPage extends State<LoginPage> {
               width: getSmallDiameter(context),
               height: getSmallDiameter(context),
               decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.purple),
+                  shape: BoxShape.circle, color: Colors.purple),
             ),
           ),
           Positioned(
@@ -52,8 +52,7 @@ class _LoginPage extends State<LoginPage> {
               width: getBiglDiameter(context),
               height: getBiglDiameter(context),
               decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.purple),
+                  shape: BoxShape.circle, color: Colors.purple),
             ),
           ),
           Positioned(
@@ -136,15 +135,16 @@ class _LoginPage extends State<LoginPage> {
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => ForgetPassword()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgetPassword()));
                       },
                       child: Container(
                           margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),
                           child: const Text(
                             "Şifremi Unuttum?",
-                            style: TextStyle(
-                                color: Colors.black, fontSize: 15),
+                            style: TextStyle(color: Colors.black, fontSize: 15),
                           )),
                     )),
                 Container(
@@ -183,7 +183,7 @@ class _LoginPage extends State<LoginPage> {
                             ),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: Colors.purple  ),
+                                color: Colors.purple),
                           ),
                         ),
                       ),
